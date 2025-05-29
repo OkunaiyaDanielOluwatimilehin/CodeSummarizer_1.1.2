@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="summarizer.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="user-info">
+        <img id="user-avatar" src="" alt="User Avatar" />
+        <h3 id="user-name"></h3>
+        <p id="user-email"></p>
+      </div>
+      <nav class="sidebar-nav">
+        <button id="edit-profile-btn">Edit Profile</button>
+        <button id="change-password-btn">Change Password</button>
+        <button id="settings-btn">Settings</button>
+        <button id="logout-btn">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="chat-container">
+        <div id="chat-output" class="chat-output"></div>
+    
+        <div class="chat-input-wrapper">
+          <form id="chat-input-form" class="chat-input-form">
+            <textarea id="chat-input" rows="1" placeholder="Enter text to summarize..."></textarea>
+            <button type="submit">Summarize</button>
+          </form>
+        </div>
+      </main>
+      </div>
+      <script src="summarizer.js"></script>
+      <script>
+         const chatInput = document.getElementById("chat-input");
+          chatInput.addEventListener("input", () => {
+          chatInput.style.height = "auto"; // reset height to shrink if needed
+          chatInput.style.height = chatInput.scrollHeight + "px"; // expand to fit content
+        });
+      </script>
+</body>
+</html>

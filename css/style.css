@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+/* styles.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    color: #111;
+    overflow-x: hidden; /* Prevent horizontal scroll from background animations */
+}
+
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: rgba(2, 0, 36, 1);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center; /* center nav container */
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    padding: 1rem 2rem;
+    background: transparent;
+    height: 70px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Softer border */
+    width: auto;
+    border-radius: 8px; /* Slightly more rounded */
+    margin: 0 auto; /* center nav */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin-top: 70px;
+    
+}
+
+.nav-left img {
+    height: 32px;
+    width: auto;
+    padding-right: 90px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a,
+.nav-right a {
+    position: relative;
+    font-weight: 600;
+    font-size: 12px;
+    color: white;
+    padding-bottom: 4px;
+    text-decoration: none;
+}
+
+/* Hover underline effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0%;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Active link style */
+.nav-links a.active::after {
+    width: 100%;
+    background-color: #ff4b5c; /* Use primary color */
+}
+
+/* Nav Button - Removed as it's commented out in HTML */
+
+
+/* Menu toggle button hidden on desktop */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 10px;
+    background: #4f46e5;
+    border-radius: 4px;
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: #4338ca;
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    min-height: 90vh; /* Make it taller */
+    background: linear-gradient(135deg, #020024 0%, #0a0a20 50%, #020024 100%); /* Deeper, more atmospheric gradient */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 30px; /* Reduced gap */
+    max-width: 900px; /* Centered narrow column */
+    width: 100%;
+    align-items: center;
+    text-align: center; /* Center text */
+    position: relative;
+    z-index: 1; /* Ensure content is above animation */
+}
+
+.hero-text {
+    flex: none; /* No flex growing */
+    padding: 0; /* No padding right */
+}
+
+.hero-text h1 {
+    font-size: 5rem; /* Even larger heading */
+    margin-bottom: 20px;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-text h1 br {
+    display: block; /* Keep line break for stacking */
+}
+
+.hero-text h1 span {
+    /* No specific style for span, as gradient applies to full h1 */
+    color: unset; /* Resetting any previous color for span */
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* --- Animated Technology Background Effect --- */
+.animated-tech-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Crucial to clip the moving background */
+    z-index: -1; /* Ensures it stays behind your content */
+    background-color: #1a1a2e; /* Deep dark blue/purple base color */
+
+    /* First layer: Fine, fast-moving diagonal lines */
+    background-image:
+        linear-gradient(45deg, transparent 50%, rgba(136, 192, 208, 0.05) 50%),
+        linear-gradient(-45deg, transparent 50%, rgba(136, 192, 208, 0.05) 50%);
+    background-size: 20px 20px; /* Size of grid cells */
+    background-position: 0 0, 0 0;
+    animation: moveBackground1 25s linear infinite;
+
+    /* Second layer: Medium, slower-moving horizontal lines */
+    background-image:
+        linear-gradient(90deg, transparent 50%, rgba(76, 175, 80, 0.07) 50%),
+        linear-gradient(0deg, transparent 50%, rgba(76, 175, 80, 0.07) 50%); /* Vertical lines for a grid */
+    background-size: 50px 50px;
+    background-position: 0 0, 0 0;
+    animation: moveBackground2 40s linear infinite;
+
+    /* Third layer: Larger, very slow-moving subtle glow */
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(136, 192, 208, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(76, 175, 80, 0.02) 0%, transparent 50%);
+    background-size: 300px 300px, 300px 300px;
+    background-position: 0 0, 0 0;
+    animation: moveBackground3 60s linear infinite;
+}
+
+/* Typewriter Effect */
+.typewriter-container {
+    height: 1.5em; /* Fixed height to prevent layout shift */
+    margin-bottom: 25px; /* Space between typewriter and paragraph */
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #a0a0ff; /* Light blue/purple for subheading */
+    /* white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide overflowing text */
+}
+
+#typewriter-text {
+    /* This element is updated by JS. No border-right here. */
+    box-sizing: border-box;
+}
+
+.typewriter-cursor {
+    border-right: 2px solid transparent; /* This creates the blinking cursor */
+    animation: blink-caret 0.75s step-end infinite;
+    color: #a0a0ff;
+    font-weight: 300;
+    vertical-align: bottom; /* Align cursor to the bottom of the text line */
+}
+
+@keyframes blink-caret {
+    from, to { border-right-color: transparent }
+    50% { border-right-color: #a0a0ff; }
+}
+
+
+.hero-text p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #c0c0c0;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s 0.6s ease-out forwards;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center buttons */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s 0.9s ease-out forwards;
+}
+
+.btn {
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.primary {
+    background-color: #ff4b5c;
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 75, 92, 0.3);
+}
+
+.btn.primary:hover {
+    background-color: #e03552;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 75, 92, 0.4);
+}
+
+.btn.primary i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn.primary:hover i {
+    transform: translateX(5px);
+}
+
+.btn.secondary {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    background: transparent;
+}
+
+.btn.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    border-color: white;
+}
+
+/* Keyframe animation for fade-in and slide-up */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* New Counter Section */
+.counter-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a1a3a, #0d0d20); /* Dark background */
+    text-align: center;
+    color: white;
+}
+
+.counter-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.counter-display {
+    font-size: 5rem; /* Large number */
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #ff4b5c; /* Highlight color for the number */
+}
+
+.counter-display span:last-child {
+    font-size: 3rem; /* Smaller plus sign */
+    vertical-align: super;
+}
+
+.counter-content p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #c0c0c0;
+}
+
+/* FAQ Section */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px; /* Increased padding */
+    /* REMOVED background: linear-gradient(135deg, #0d0d20, #1a1a3a); */
+    background: none; /* No background */
+    color: white; /* Ensure text is visible */
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 40px; /* More space */
+    font-size: 3rem;
+    color: black; /* Ensure title is white */
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Softer divider */
+    /* padding: 20px 0; More padding */
+}
+
+.faq-question {
+    background: none;
+    border: none;
+    font-size: 1.3rem; /* Larger question text */
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    color: black; /* Highlight question color */
+    transition: color 0.3s ease;
+}
+.faq-question:hover {
+    color: #e03552;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    color: black; /* Arrow color */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease; /* Add padding to transition */
+    margin-top: 5px;
+    font-size: 1.1rem;
+    color: #c0c0c0; /* Softer text color */
+    padding-left: 10px; /* Indent answer */
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px; /* Adjust as needed */
+    padding-top: 10px; /* Add padding when open */
+}
+
+.faq-item.active .arrow {
+    transform: rotate(45deg);
+}
+
+/* Footer */
+/* --- Footer Section Styles (Updated) --- */
+.footer {
+    background-color: #2c3e50; /* Dark background */
+    color: #ecf0f1; /* Light text color */
+    padding: 40px 20px; /* Smaller padding for a more compact footer */
+    text-align: center; /* Center overall footer content */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    justify-content: space-around; /* Distribute sections horizontally */
+    max-width: 900px; /* Control the max width of the content */
+    margin: 0 auto 20px auto; /* Center content and add space below */
+}
+
+.footer-section {
+    flex-basis: 30%; /* Approximate width for each section (adjust as needed) */
+    margin-bottom: 20px; /* Space between sections when they wrap */
+    text-align: left; /* Align text within individual sections */
+}
+
+.footer-section.logo-section {
+    flex-basis: 40%; /* Give the logo section more horizontal space */
+    text-align: center; /* Center logo and its text */
+}
+
+.footer-section .logo img {
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    color: #88c0d0; /* A soft blue for headings */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-align: center; /* Center the heading itself */
+}
+
+.footer-section p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Quick Links Horizontal (New Class) --- */
+.quick-links-horizontal {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    display: flex; /* Make list items horizontal */
+    justify-content: space-around; /* Distribute items evenly */
+    margin: 0; /* Remove default list margins */
+}
+
+.quick-links-horizontal li {
+    margin: 0 5px; /* Small horizontal space between items */
+}
+
+.quick-links-horizontal a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.quick-links-horizontal a:hover {
+    color: #4CAF50; /* Highlight color on hover */
+}
+
+.rights {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Responsive Adjustments for Footer --- */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack footer sections vertically on mobile */
+        align-items: center;
+    }
+    .footer-section {
+        flex-basis: 100%; /* Each section takes full width */
+        text-align: center; /* Center text when stacked */
+        margin-bottom: 30px;
+    }
+    .footer-section.logo-section {
+        order: -1; /* Ensure logo section is first */
+    }
+    .footer-section h3 {
+        margin-bottom: 10px;
+    }
+    .quick-links-horizontal {
+        flex-direction: column; /* Stack quick links vertically on mobile */
+        gap: 10px;
+    }
+    .quick-links-horizontal li {
+        margin: 0;
+    }
+}

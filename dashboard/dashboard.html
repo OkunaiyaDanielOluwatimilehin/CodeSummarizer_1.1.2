@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="logo">YourApp</div>
+    <!-- Place this where you want the avatar shown -->
+    <img id="avatar-preview" class="rounded-full w-12 h-12" alt="User Avatar" />
+    <div id="avatar-fallback" class="w-12 h-12" style="display: none;"></div>
+    <nav class="dashboard-nav">
+      <button id="new-project-btn">New Project</button>
+      <button id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <main class="dashboard-main">
+    <section class="user-info" id="user-info">
+      <!-- JS will populate user's name or avatar -->
+    </section>
+
+    <section class="projects-section">
+      <h2>Your Projects</h2>
+      <div id="projects-list" class="projects-list">
+        <!-- JS will inject project cards here -->
+      </div>
+    </section>
+  </main>
+  <section class="profile-editor">
+    <h2>Edit Profile</h2>
+    <form id="profile-form">
+      <label>Full Name: <input type="text" id="full-name" /></label>
+      <label>Username: <input type="text" id="username-field" /></label>
+      <label>Bio: <textarea id="bio"></textarea></label>
+      <label>Upload Avatar: <input type="file" id="avatar-upload" /></label>
+    <img id="avatar-preview" src="" alt="Avatar Preview" style="max-width: 100px; margin-top: 10px;" />
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </section>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

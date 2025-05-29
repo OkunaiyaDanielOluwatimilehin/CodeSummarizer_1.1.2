@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Layout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/1f7c50f8ab.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bg-white">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="#">
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Logo" />
+                    </a>
+                </div>
+
+                <div class="menu-toggle" onclick="toggleMenu()">Menu</div>
+
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="active">HOME</a>
+                    <a href="#">FEATURES</a>
+                    <a href="#">ABOUT</a>
+                    <a href="#">CONTACT</a>
+                    <!-- Place this where you want the avatar shown -->
+                    <img id="avatar-preview" class="rounded-full w-12 h-12" alt="User Avatar" />
+                    <div id="avatar-fallback" class="w-12 h-12" style="display: none;"></div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <section class="hero">
+        <div class="animated-tech-background"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Summarize Code <br> in Seconds.</h1>
+                <div class="typewriter-container">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+                </div>
+                <p>Seamlessly transform complex code into concise, human-readable summaries powered by advanced AI. Perfect for students, developers, and learners.</p>
+                <div class="hero-buttons">
+                    <a href="auth/signup.html" class="btn primary">Get Started <i class="fas fa-arrow-right"></i></a>
+                    <a href="#faq-section" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="counter-section">
+        <div class="counter-content">
+            <div class="counter-display">
+                <span id="companies-counter">0</span><span>+</span>
+            </div>
+            <p>companies across all sectors and industries have used our tool so far!</p>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <button class="faq-question">What is Code Summarizer?<span class="arrow">+</span></button>
+            <div class="faq-answer">
+                <p>Code Summarizer is an AI-powered tool that helps developers quickly summarize large blocks of code into easy-to-understand explanations.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Is it free to use?<span class="arrow">+</span></button>
+            <div class="faq-answer">
+                <p>Yes, the basic version is free. We also offer premium features for advanced summarizations and integrations.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Which programming languages are supported?<span class="arrow">+</span></button>
+            <div class="faq-answer">
+                <p>Currently, we support popular languages like JavaScript, Python, Java, C++, and more are being added regularly.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How accurate are the summaries?<span class="arrow">+</span></button>
+            <div class="faq-answer">
+                <p>The summarizer uses advanced AI models trained on multiple codebases. While it's highly accurate for most cases, always review the output for critical tasks.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">Is my code safe and private?<span class="arrow">+</span></button>
+            <div class="faq-answer">
+                <p>We prioritize your privacy. All code inputs are encrypted, and we do not store your data beyond the summarization session.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section logo-section">
+                <div class="logo"><img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Logo"></div>
+                <p>Simplifying complex code into clear summaries in seconds.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links-horizontal"> <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#faq-section">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rights"> <p>© 2025 CodeSummarizer. All rights reserved.</p></div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

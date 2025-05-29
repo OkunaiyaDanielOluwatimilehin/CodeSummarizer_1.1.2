@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: League Spartan, sans-serif;
+    background:black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .auth-container {
+    position: relative;
+     z-index: 10; /* Add this line */
+    max-width: 1200px;
+    padding: 1rem;
+    background: transparent;
+    border-radius: 4px;
+    border: 1px solid white;
+    overflow: hidden;
+    margin: auto; /* centers inside flex container */
+  } 
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .auth-form h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .auth-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .auth-form input {
+    padding: 0.75rem 1rem;
+    border: 1px solid white;
+    border-radius: 2px;
+    font-size: 1rem;
+    margin-bottom: 10px; 
+    background: transparent;
+    color: white; /* Add this line */
+  }
+  
+  
+  .auth-form input:focus {
+    outline: 2px solid #4f46e5;
+    /* background: #e9e9ff; */
+    color: white;
+  }
+  
+  .btn {
+    padding: 0.75rem 1rem;
+    background: #4f46e5;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 300px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: #4338ca;
+  }
+  
+  .toggle-link {
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+    text-decoration: none;
+  }
+  
+  .toggle-link:hover {
+    color: #818cf8;
+  }
+
+  p{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .auth-container {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+  }
+  .back-button {
+    display: inline-block;
+    font-size: 0.85rem;          /* smaller font size */
+    color: white;              /* soft color */
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 190px;           /* push to right */
+    margin-bottom: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+  }
+  
+  .back-button:hover {
+    color: #818cf8;
+  }
+  
+  
+  
+
+  /* background animation */
+  .gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.gradient-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.sphere-1 {
+    width: 40vw;
+    height: 40vw;
+    background: linear-gradient(40deg, rgba(255, 0, 128, 0.8), rgba(255, 102, 0, 0.4));
+    top: -10%;
+    left: -10%;
+    animation: float-1 15s ease-in-out infinite alternate;
+}
+
+.sphere-2 {
+    width: 45vw;
+    height: 45vw;
+    background: linear-gradient(240deg, rgba(72, 0, 255, 0.8), rgba(0, 183, 255, 0.4));
+    bottom: -20%;
+    right: -10%;
+    animation: float-2 18s ease-in-out infinite alternate;
+}
+
+.sphere-3 {
+    width: 30vw;
+    height: 30vw;
+    background: linear-gradient(120deg, rgba(133, 89, 255, 0.5), rgba(98, 216, 249, 0.3));
+    top: 60%;
+    left: 20%;
+    animation: float-3 20s ease-in-out infinite alternate;
+}
+
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: 5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes float-1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(10%, 10%) scale(1.1);
+    }
+}
+
+@keyframes float-2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(-10%, -5%) scale(1.15);
+    }
+}
+
+@keyframes float-3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-5%, 10%) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    z-index: 2;
+}
+
+.glow {
+    position: absolute;
+    width: 40vw;
+    height: 40vh;
+    background: radial-gradient(circle, rgba(72, 0, 255, 0.15), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: pulse 8s infinite alternate;
+    filter: blur(30px);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* toast */
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4f46e5;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.toast.success {
+  background-color: #4caf50; /* Green */
+}
