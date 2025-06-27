@@ -5,148 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login - Your Project</title>
   <link rel="stylesheet" href="auth.css" />
+  <script src="https://kit.fontawesome.com/1f7c50f8ab.js" crossorigin="anonymous"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <div class="gradient-background">
-        <div class="gradient-sphere sphere-1"></div>
-        <div class="gradient-sphere sphere-2"></div>
-        <div class="gradient-sphere sphere-3"></div>
-        <div class="glow"></div>
-        <div class="grid-overlay"></div>
-        <div class="noise-overlay"></div>
-        <div class="particles-container" id="particles-container"></div>
-    </div>
   <div class="auth-container">
-    <a href="/code-summarizer/index.html" class="back-button">← Back to Home</a>
     <form class="auth-form" id="login-form">
-      <h2>Login</h2>
-
+    <a href="/Frontend/index.html" class="back-button">← Back to Home</a>
+    
+    <form id="login-form">
       <label for="login-email">Email</label>
       <input type="email" id="login-email" placeholder="Enter your email" required />
-
+    
       <label for="login-password">Password</label>
       <input type="password" id="login-password" placeholder="Enter password" required />
+    
+      <button type="submit" class="btn full-width">Log In <i class="fa-solid fa-right-to-bracket"></i></button>
 
-      <button type="submit" class="btn">Login</button>
-
+      <div class="oauth-buttons">
+        <button type="button" id="googleSignIn" class="btn oauth-btn google full-width">
+          <i class="fa-brands fa-google"></i> Continue with Google
+        </button>
+        <button type="button" id="github-login" class="btn oauth-btn github full-width">
+          <i class="fa-brands fa-github"></i> Continue with GitHub
+        </button>
+      </div>
       <p>Don't have an account? <a href="signup.html" class="toggle-link">Sign up here</a></p>
     </form>
   </div>
 </body>
-<script>
-    const particlesContainer = document.getElementById('particles-container');
-        const particleCount = 80;
-        
-        // Create particles
-        for (let i = 0; i < particleCount; i++) {
-            createParticle();
-        }
-        
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // Random size (small)
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            
-            // Initial position
-            resetParticle(particle);
-            
-            particlesContainer.appendChild(particle);
-            
-            // Animate
-            animateParticle(particle);
-        }
-        
-        function resetParticle(particle) {
-            // Random position
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            
-            particle.style.left = `${posX}%`;
-            particle.style.top = `${posY}%`;
-            particle.style.opacity = '0';
-            
-            return {
-                x: posX,
-                y: posY
-            };
-        }
-        
-        function animateParticle(particle) {
-            // Initial position
-            const pos = resetParticle(particle);
-            
-            // Random animation properties
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            
-            // Animate with GSAP-like timing
-            setTimeout(() => {
-                particle.style.transition = `all ${duration}s linear`;
-                particle.style.opacity = Math.random() * 0.3 + 0.1;
-                
-                // Move in a slight direction
-                const moveX = pos.x + (Math.random() * 20 - 10);
-                const moveY = pos.y - Math.random() * 30; // Move upwards
-                
-                particle.style.left = `${moveX}%`;
-                particle.style.top = `${moveY}%`;
-                
-                // Reset after animation completes
-                setTimeout(() => {
-                    animateParticle(particle);
-                }, duration * 1000);
-            }, delay * 1000);
-        }
-        
-        // Mouse interaction
-        document.addEventListener('mousemove', (e) => {
-            // Create particles at mouse position
-            const mouseX = (e.clientX / window.innerWidth) * 100;
-            const mouseY = (e.clientY / window.innerHeight) * 100;
-            
-            // Create temporary particle
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // Small size
-            const size = Math.random() * 4 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            
-            // Position at mouse
-            particle.style.left = `${mouseX}%`;
-            particle.style.top = `${mouseY}%`;
-            particle.style.opacity = '0.6';
-            
-            particlesContainer.appendChild(particle);
-            
-            // Animate outward
-            setTimeout(() => {
-                particle.style.transition = 'all 2s ease-out';
-                particle.style.left = `${mouseX + (Math.random() * 10 - 5)}%`;
-                particle.style.top = `${mouseY + (Math.random() * 10 - 5)}%`;
-                particle.style.opacity = '0';
-                
-                // Remove after animation
-                setTimeout(() => {
-                    particle.remove();
-                }, 2000);
-            }, 10);
-            
-            // Subtle movement of gradient spheres
-            const spheres = document.querySelectorAll('.gradient-sphere');
-            const moveX = (e.clientX / window.innerWidth - 0.5) * 5;
-            const moveY = (e.clientY / window.innerHeight - 0.5) * 5;
-            
-            spheres.forEach(sphere => {
-                const currentTransform = getComputedStyle(sphere).transform;
-                sphere.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-        });
-</script>
 <script type="module" src="auth.js"></script>
 </html>

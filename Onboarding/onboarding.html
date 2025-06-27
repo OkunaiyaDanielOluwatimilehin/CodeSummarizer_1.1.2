@@ -9,122 +9,61 @@
     <script src="https://cdn.jsdelivr.net/npm/@dicebear/core@4.10.1/dist/core.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@dicebear/collection-lorelei@4.10.1/dist/lorelei.min.js"></script>
     <script src="onboarding.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <div class="onboarding-wrapper">
-<!-- Step 1: Name -->
-<section class="onboarding-step active" id="step-1">
-  <h2>What's your full name?</h2>
-  <input type="text" id="fullName" />
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
+  <div class="onboarding-wrapper">
 
-<!-- Step 2: Role -->
-<section class="onboarding-step" id="step-2">
-  <h2>Your developer role</h2>
-  <select id="role">
-    <option value="">Select one</option>
-    <option value="Frontend">Frontend</option>
-    <option value="Backend">Backend</option>
-    <option value="Fullstack">Fullstack</option>
-  </select>
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 3: Language -->
-<section class="onboarding-step" id="step-3">
-  <h2>Your preferred language?</h2>
-  <input type="text" id="language" />
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 4: Use case -->
-<section class="onboarding-step" id="step-4">
-  <h2>What will you use this tool for?</h2>
-  <textarea id="useCase"></textarea>
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 5: Username -->
-<section class="onboarding-step" id="step-5">
-  <h2>Choose a unique username</h2>
-  <input type="text" id="username" />
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 6: Upload Avatar -->
-<section class="onboarding-step" id="step-6">
-  <h2>Upload a profile picture</h2>
-  <input type="file" id="profile-pic" accept="image/*" />
-  <div id="avatar-preview" style="margin-top:10px;"></div>
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 7: Bio -->
-<section class="onboarding-step" id="step-7">
-  <h2>Tell us about yourself</h2>
-  <textarea id="bio"></textarea>
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-
-<!-- Step 8: Location + Tags -->
-<section class="onboarding-step" id="step-8">
-  <h2>Location and Skills</h2>
-  <input type="text" id="location" placeholder="Location" />
-  <input type="text" id="tags" placeholder="Comma-separated tags (e.g. React, Firebase)" />
-  <div class="nav-buttons">
-    <button class="back-btn">Back</button>
-    <button class="skip-btn">Skip</button>
-    <button class="next-btn">Next</button>
-  </div>
-</section>
-<section class="onboarding-step" id="step-9">
-  <h2>Would you like to create a project now?</h2>
-  <div id="project-choice-buttons">
-    <button id="yes-btn">Yes</button>
-    <button id="no-btn">No</button>
-  </div>
-
-  <div id="project-name-section" style="display:none; margin-top: 20px;">
-    <input type="text" id="project-name" placeholder="Enter project name" />
-    <div class="nav-buttons" style="margin-top: 10px;">
-      <button class="back-btn">Back</button>
-      <button id="submit-project-btn" class="submit-btn">Finish</button>
-    </div>
-  </div>
-</section>
+    <!-- Step 1: Username -->
+    <section class="onboarding-step active" id="step-1">
+      <h2>Username</h2>
+      <p id="generated-username-display"></p>
+      <input type="text" id="fullName" />
+      <small>Edit your generated username if you want.</small>
+      <div class="nav-buttons">
+        <button class="back-btn" style="display:none;">Back</button>
+        <button class="skip-btn">Skip</button>
+        <button class="next-btn">Next</button>
       </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
-        <div class="progress-text" id="progress-text">Step 1 of 4</div>
-      </div>     
+    </section>
+  
+    <!-- Step 2: Role -->
+    <section class="onboarding-step" id="step-2">
+      <h2>Your developer role</h2>
+      <select id="role">
+        <option value="">Select one</option>
+        <option value="Frontend">Frontend</option>
+        <option value="Backend">Backend</option>
+        <option value="Fullstack">Fullstack</option>
+      </select>
+      <div class="nav-buttons">
+        <button class="back-btn">Back</button>
+        <button class="skip-btn">Skip</button>
+        <button class="next-btn">Next</button>
+      </div>
+    </section>
+  
+    <!-- Step 3: Preferred Language -->
+    <section class="onboarding-step" id="step-3">
+      <h2>Your preferred programming language?</h2>
+      <input type="text" id="language" placeholder="Optional" />
+      <div class="nav-buttons">
+        <button class="back-btn">Back</button>
+        <button class="skip-btn">Skip</button>
+        <button class="next-btn">Next</button>
+      </div>
+    </section>
+  
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+      <div class="progress-text" id="progress-text">Step 1 of 3</div>
+    </div>
+  </div>    
 </body>
 </html>

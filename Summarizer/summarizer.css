@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+/* Reset default spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+    font-family: 'League Spartan', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgb(33,33,33);
+    overflow-x: hidden; 
+}
+
+.user-menu-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+#loginPrompt{
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+#loginPrompt a {
+  color: #085bb5;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar button styling */
+.avatar-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.username-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+}
+.avatar-button i{
+  font-size: 1.8rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* user menu */
+.user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 200px;
+  z-index: 999;
+  margin-right: 14px; /* space from scrollbar */
+  /* display: none; */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.user-dropdown.hidden {
+  display: none;
+}
+
+.user-dropdown.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.user-dropdown .dropdown-header {
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  border-top: 1px solid #f0f0f0;
+}
+
+.dropdown-menu li:first-child {
+  border-top: none;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+  font-weight: 900;
+  background: #f5f7fa;
+  color: #111;
+  font-size: 16px;
+}
+.dropdown-menu i{
+  font-size: 12px;
+  color: black;
+  margin-right: 10px;
+}
+
+
+
+/* summarizer wrapper */
+#summarizerWrapper {
+    min-height: 100vh;
+    gap: 1rem;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: none; 
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative;
+    display: flex;              /* override default none */
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  /* Stick the input block to the bottom center */
+  #inputSection {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    /* max-width: 700px; */
+    padding: 0 20px;
+    z-index: 1000;
+  }
+  
+  /* Center everything inside */
+  #inputContainer {
+      background: none;
+      border: none;
+      padding: 0;
+      gap: 10px;  
+  }
+  
+  /* Input box: clean, resizable, and smooth */
+  #inputBox {
+    width: 100%;
+    min-height: 100px;
+    max-height: 250px;
+    resize: vertical;
+    border-radius: 12px;
+    border: 1px solid #666;
+    padding: 12px;
+    font-size: 15px;
+    color: white;
+    background: #1a1a1a;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .input-with-buttons {
+    position: relative;
+    width: 100%;
+  }
+  
+  #inputBox {
+    padding: 12px 60px; /* make room for both buttons */
+    padding-left: 80px; /* more space on left side for 'Back' */
+  }
+  
+  #submitButton {
+    all: unset;
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: 20px;
+    color: white;
+    background-color: #085bb5;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+   
+  #submitButton i {
+    font-size: 16px;
+  }
+  #submitButton.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  #backButton{
+    text-decoration: none;
+  }
+  .top-back-button {
+    position: fixed;
+    top: 20px;
+    left: 40px;
+    z-index: 1100;
+    background-color: #085bb5;
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .top-back-button i {
+    font-size: 10px;
+  }
+
+  .top-back-button p{
+    font-size: 12px;
+  }
+  
+  /* Output section */
+  #outputSection {
+    display: none;
+    position: fixed;
+    bottom: 120px; /* just above inputSection */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    max-width: 1000px;
+    z-index: 999;
+    text-align: center;
+  }
+  
+  #outputContainer {
+    position: relative;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px; /* Give space above input box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  
+  
+  /* Output textarea matches input look */
+  #outputBox {
+    width: 100%;
+    /* min-height: 150px;
+    max-height: 400px; */
+    padding: 15px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 12px;
+    border: 1px solid #666;
+    background-color: #1a1a1a;
+    color: white;
+    resize: vertical;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 120px; /* Space for input box below */
+    outline: none;
+  }
+  
+  
+  /* Input/Output button styles - scoped */
+  #buttonContainer button {
+    background-color: #085bb5;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+  }
+  
+  #buttonContainer button:hover{
+    background-color: #ff6b6b;
+  }
+  
+  #backButton {
+    display: inline-block !important;
+  }
+  
+  /* INPUT BOX: Shrinks when summarizing */
+  #inputBox.shrunk {
+    height: 100px;
+    resize: none;
+    transition: height 0.3s ease;
+  }
+  
+  
+  /* OUTPUT BOX: Expands when results are shown */
+  #outputBox.expanded {
+    height: 500px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* OUTPUT BOX: Expanded + focused styling */
+  #outputBox.expanded:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.4);
+  }
+
+.trial-counter {
+  font-size: 14px;
+  color: #a5b4fc;
+  margin-left: 10px;
+}
+
+.summary-history {
+  padding: 1rem;
+  margin-top: 2rem;
+  max-height: 300px;
+  overflow-y: auto;
+  border-top: 1px solid #333;
+}
+
+.history-entry {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #444;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.input-preview, .output-preview {
+  margin-bottom: 0.5rem;
+}
+
+.hidden { 
+  display: none !important; 
+}
+
+
+
+@media (max-width: 768px) {
+  /* Avatar & Username */
+    .user-menu-wrapper {
+      top: 15px;
+      right: 12px;
+    }
+  
+  .avatar-button {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .username-label {
+    font-size: 13px;
+  }
+
+  .avatar-button i {
+    font-size: 1.5rem;
+  }
+
+  /* User dropdown */
+  .user-dropdown {
+    min-width: 160px;
+    margin-right: 10px;
+  }
+
+  .user-dropdown .dropdown-header {
+    font-size: 14px;
+  }
+
+  .dropdown-menu li a {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  /* Input section sticks to bottom but adapts */
+  #inputSection {
+    width: 95%;
+    bottom: 20px;
+    padding: 0 10px;
+  }
+
+  #inputBox {
+    font-size: 14px;
+    padding: 12px 50px;
+    padding-left: 65px;
+  }
+
+  .top-back-button {
+    top: 12px;
+    left: 12px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  #submitButton {
+    right: 10px;
+    bottom: 10px;
+    padding: 8px;
+  }
+  
+  /* Output section */
+  #outputSection {
+    bottom: 130px;
+    width: 95%;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  #outputBox {
+    font-size: 14px;
+    padding: 12px;
+    margin-bottom: 100px;
+  }
+
+  /* Trial popup */
+  .trial-content {
+    padding: 1.5rem 1rem;
+    width: 90%;
+    font-size: 15px;
+  }
+
+  .trial-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn.login, .btn.signup {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 15px;
+  }
+
+  /* Shrunk/Expanded states adjustments */
+  #outputBox.expanded {
+    height: 350px;
+    font-size: 15px;
+  }
+
+  #inputBox.shrunk {
+    height: 80px;
+  }
+}
